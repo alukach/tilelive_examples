@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <script charset="UTF-8" type="text/javascript" src="js/modestmaps.min.js"></script>
+    <title>test map</title>
+    <style type="text/css">
+#map {
+    width:100%;
+    height:1000px;
+}
+    </style>
+    <script type="text/javascript">
+function test() {
+        // name of a div element:
+var parent = 'map';
+
+// defaults to Google-style Mercator projection, so works
+// out of the box with OpenStreetMap and friends:
+var template = 'http://localhost:8888/{Z}/{X}/{Y}.png';
+var provider = new MM.TemplatedLayer(template);
+
+// without a size, it will expand to fit the parent:
+var map = new MM.Map(parent, provider);
+map.setCenterZoom(new MM.Location(46.311723, 0.277405), 4);
+}
+    </script>
+</head>
+<body id="map" onload="test()">
+</body>
+</html>
